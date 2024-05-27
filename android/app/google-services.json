@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "2181659769",
+    "project_id": "guessthenumber-d6d33",
+    "storage_bucket": "guessthenumber-d6d33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2181659769:android:97533afdc82b63f75268a8",
+        "android_client_info": {
+          "package_name": "com.application2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9HiMktHAsbLhLe2nH5UByGWqv0aN-eT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
