@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable quotes */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /**
@@ -22,9 +24,10 @@ import {
 
 } from 'react-native/Libraries/NewAppScreen';
 
-import MyComponent  from './components/screenSign';
+import MyComponent from './components/screenSign';
 import SignScreen from './components/SignScreen';
-
+import ScreeLoadign from './components/ScreenLoding';
+import ScreeToBegin from "./components/ScreenToBegin";
 function App(): React.JSX.Element {
   // const isDarkMode = useColorScheme() === 'dark';
 
@@ -33,11 +36,11 @@ function App(): React.JSX.Element {
   // };
 
   return (
-    <View style={{flex:1}} >
-     {/* <MyComponent /> */}
-     <SignScreen />
-    
-      </View>
+    <View style={{ flex: 1 }} >
+      {/* <MyComponent /> */}
+      <ScreeToBegin />
+
+    </View>
   );
 }
 
