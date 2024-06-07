@@ -28,6 +28,7 @@ import MyComponent from './components/screenSign';
 import SignScreen from './components/SignScreen';
 import ScreeLoadign from './components/ScreenLoding';
 import ScreeToBegin from "./components/ScreenToBegin";
+import ScreenChoice from './components/ScreenChoice';
 function App(): React.JSX.Element {
   // const isDarkMode = useColorScheme() === 'dark';
 
@@ -38,7 +39,7 @@ function App(): React.JSX.Element {
   return (
     <View style={{ flex: 1 }} >
       {/* <MyComponent /> */}
-      <ScreeToBegin />
+      <ScreenChoice />
 
     </View>
   );
