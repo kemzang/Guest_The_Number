@@ -1,36 +1,39 @@
 /* eslint-disable prettier/prettier */
+
 /* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 import * as React from "react";
 import { StyleSheet, View, Text, Pressable, ImageBackground } from "react-native";
-import background from "../assets/images/Group4.png";
 
-const ScreenSign = () => {
+import background from  "../assets/images/Group4.png";
+
+const ScreenSign = ({navigation}) => {
 	return (
+
 		<View style={styles.container}>
-			<ImageBackground source={background} style= {styles.backgroundImage}>
-			<Text style={styles.guessNumber}>
-				<Text style={styles.guessNumberTxtContainer}>
-					<Text style={styles.guess}>
-						<Text style={styles.guess1}>
-							<Text style={styles.gue}>Gue</Text>
-							<Text style={styles.ss}>ss</Text>
-						</Text>
-					</Text>
-					<Text style={styles.gue}>
+			<ImageBackground source={background} style={styles.backgroundImage}>
+				<Text style={styles.guessNumber}>
+					<Text style={styles.guessNumberTxtContainer}>
 						<Text style={styles.guess}>
-							<Text style={styles.text1}>{` `}</Text>
+							<Text style={styles.guess1}>
+								<Text style={styles.gue}>Gue</Text>
+								<Text style={styles.ss}>ss</Text>
+							</Text>
 						</Text>
-						<Text style={styles.number1}>Number</Text>
+						<Text style={styles.gue}>
+							<Text style={styles.guess}>
+								<Text style={styles.text1}>{` `}</Text>
+							</Text>
+							<Text style={styles.number1}>Number</Text>
+						</Text>
 					</Text>
 				</Text>
-			</Text>
-			<Pressable style={[styles.groupParent, styles.groupParentLayout]} onPress={() => { }}>
-				<View>
-					<View style={[styles.groupChild, styles.groupShadowBox]} />
-					<Text style={[styles.signTypo]}>Sign Up</Text>
-				</View>
-			</Pressable>
+				<Pressable style={[styles.groupParent, styles.groupParentLayout]} onPress={()=>{navigation.navigate("Page_de_choix_de_jeu")}}>
+					<View>
+						<View style={[styles.groupChild, styles.groupShadowBox]} />
+						<Text style={[styles.signTypo]}>Sign Up</Text>
+					</View>
+				</Pressable>
 			</ImageBackground>
 		</View>
 	);

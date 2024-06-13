@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable quotes */
+/* eslint-disable comma-dangle */
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({

@@ -14,7 +14,7 @@ import ImmersiveMode from 'react-native-immersive';
 
 // import SvgUri from 'react-native-svg';
 
-const AndroidSmall = () => {
+const SignScreen = () => {
     const hideBars = () => {
         ImmersiveMode;
     };
@@ -69,7 +69,7 @@ const AndroidSmall = () => {
                     {/*Partie 3: action des buttons*/}
 
                     <View style={styles.parent}>
-                        <Pressable style={styles.btn_inscription} onPress={() => { }}>
+                        <Pressable style={styles.btn_inscription}>
                             <Text style={styles.text_inscription}>
                                 S'inscrire
                             </Text>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     persoStyle:
     {
         width: 350,
-        height: 210,
+        height: 220,
     }
     ,
 
@@ -294,4 +294,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default AndroidSmall;
+export default SignScreen;

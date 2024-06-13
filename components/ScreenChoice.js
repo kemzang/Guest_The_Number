@@ -17,7 +17,7 @@ import approval from "../assets/images/SignScreen/Approval.png";
 import join from "../assets/images/ScreenChoice/join.png";
 
 
-export default ScreenChoice2 = () => {
+const ScreenChoice2 = ({ changeNavigate }) => {
     return (
         <View style={{ flex: 1 }} >
             <ImageBackground source={background} style={{ flex: 1, alignItems: "center", padding: 10 }}>
@@ -31,14 +31,14 @@ export default ScreenChoice2 = () => {
 
                 <View style={styles.frameParent}>
                     <View style={styles.sortRightParent}>
-                        <Image style={styles.sortRightIcon} resizeMode="cover" source={arrow_left} />
+                        <Pressable style={styles.sortRight} onPress={() => {changeNavigate(true) }}>
+                            <Image style={styles.sortRightIcon} resizeMode="cover" source={arrow_left} />
+                        </Pressable>
                         <View style={styles.container_side}>
                             <View style={styles.disabled_side2}><Text>{''}</Text></View>
                             <View style={styles.active_side2}><Text>{''}</Text></View>
                         </View>
-                        <Pressable style={styles.sortRight} onPress={() => { }}>
-                            <Image style={styles.iconLayout} resizeMode="cover" source={arrow_right} />
-                        </Pressable>
+                        <Image style={styles.iconLayout} resizeMode="cover" source={arrow_right} />
                     </View>
                     <View style={styles.text_explicatif}>
                         <Text style={styles.creerVotrePropre}>Connectez-vous a une partie existante et attendez le crie de guerre pour commencez a établir votre strategie</Text>
@@ -56,7 +56,7 @@ export default ScreenChoice2 = () => {
     )
 }
 
-const ScreeChoice1 = () => {
+const ScreeChoice1 = ({ changeNavigate,navigation }) => {
 
     return (
         <View style={{ flex: 1 }} >
@@ -76,7 +76,7 @@ const ScreeChoice1 = () => {
                             <View style={styles.active_side}><Text>{''}</Text></View>
                             <View style={styles.disabled_side}><Text>{''}</Text></View>
                         </View>
-                        <Pressable style={styles.sortRight} onPress={() => { }}>
+                        <Pressable style={styles.sortRight} onPress={() => { changeNavigate(false) }}>
                             <Image style={styles.iconLayout} resizeMode="cover" source={arrow_right} />
                         </Pressable>
                     </View>
@@ -84,7 +84,7 @@ const ScreeChoice1 = () => {
                         <Text style={styles.creerVotrePropre}>Creer votre propre partie et attendez vos participants et lancer la</Text>
                     </View>
                     <View style={[styles.vectorParent]}>
-                        <Pressable style={styles.vectorParentPressable} >
+                        <Pressable style={styles.vectorParentPressable} onPress={()=>{navigation.navigate("Loby")}}>
                             <Text style={[styles.dmarrez, styles.dmarrezFlexBox]}>Démarrez</Text>
                             <Image style={styles.approvalIcon} resizeMode="cover" source={approval} />
                         </Pressable>
@@ -93,6 +93,17 @@ const ScreeChoice1 = () => {
                 </View>
             </ImageBackground>
         </View>
+    )
+}
+
+export default Main_Choice = ({navigation}) => {
+    const [navigate, SetNavigate] = React.useState(true);
+    return (
+        <>
+            {
+                navigate ? <ScreeChoice1 changeNavigate={SetNavigate} navigation={navigation}/> : <ScreenChoice2 changeNavigate={SetNavigate} navigation={navigation} />
+            }
+        </>
     )
 }
 
@@ -115,7 +126,7 @@ const styles = StyleSheet.create(
         devenezLeMaitreContainer: {
             fontSize: 24,
             lineHeight: 22,
-            letterSpacing:2,
+            letterSpacing: 2,
             fontFamily: "DIN Black",
             textAlign: "center",
             marginTop: 90,
@@ -124,15 +135,15 @@ const styles = StyleSheet.create(
 
         ,
         groupIcon: {
-            width: "60%",
-            height: "30%",
+            width: 300,
+            height: 300,
             position: "relative",
-            left: 15
+            left: 26
         }
         ,
         groupIcon2: {
-            width: "80%",
-            height: "32%",
+            width: 360,
+            height: 300,
             position: "relative",
             left: 15
         }
@@ -152,7 +163,7 @@ const styles = StyleSheet.create(
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: 50,
+            marginTop: 20,
             marginBottom: 50
         }
 
@@ -217,9 +228,8 @@ const styles = StyleSheet.create(
         {
             backgroundColor: "#ffc700",
             width: 200,
-            borderRadius: 20,
-            height: 60,
-            marginTop: 40
+            borderRadius: 40,
+            marginTop: 30
         }
         ,
         vectorParentPressable:

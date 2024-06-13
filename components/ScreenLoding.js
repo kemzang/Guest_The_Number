@@ -13,7 +13,7 @@ import background from "../assets/images/Group4.png";
 import approve from "../assets/images/SignScreen/Approval.png";
 import error from "../assets/images/SignScreen/error.png";
 
-export default ScreeLoading = () => {
+export default ScreeLoading = ({navigation}) => {
     return (
         <View style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <ImageBackground source={background} style={styles.backgroundImage}>
