@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
 	},
 	guessNumber: {
 		top: 242,
-		left: 88,
+		left: 100,
 		display: "flex",
 		alignItems: "center",
 		width: 184,
@@ -286,7 +286,7 @@ const styles = StyleSheet.create({
 	},
 	groupParent: {
 		top: 496,
-		left: 127
+		left: 139
 	},
 	container: {
 		flex: 1,

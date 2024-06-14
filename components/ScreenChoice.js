@@ -164,7 +164,8 @@ const styles = StyleSheet.create(
             flexDirection: "row",
             justifyContent: "space-between",
             marginTop: 20,
-            marginBottom: 50
+            marginBottom: 50,
+            width:300
         }
 
         , container_side:
