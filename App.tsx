@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable jsx-quotes */
 /* eslint-disable quotes */
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * Sample React Native App
@@ -9,8 +9,8 @@
  * @format
  */
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, C } from '@react-navigation/stack';
+import { NavigationContainer,useRoute } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Button, View, Text } from 'react-native';
 
 
@@ -29,13 +29,14 @@ const Stack = createStackNavigator();
 
 // Configurer la navigation
 function App() {
+
+  const isa = false;
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Page_si_Pas_de_connexion" component={MyComponent} />
+        <Stack.Screen name="Page_si_Pas_de_connexion" component={isa ? MyComponent : ScreeToBegin} />
         <Stack.Screen name="Page_Inscription_connexion" component={SignScreen} />
         <Stack.Screen name="Page_de_chargement" component={ScreeLoadign} />
-        <Stack.Screen name="Page_de_Lancement_jeu" component={ScreeToBegin} />
         <Stack.Screen name="Page_de_choix_de_jeu" component={ScreenChoice} />
         <Stack.Screen name='Loby' component={ScreenLoby}/>
       </Stack.Navigator>

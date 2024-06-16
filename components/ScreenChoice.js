@@ -17,7 +17,14 @@ import approval from "../assets/images/SignScreen/Approval.png";
 import join from "../assets/images/ScreenChoice/join.png";
 
 
-const ScreenChoice2 = ({ changeNavigate }) => {
+const ScreenChoice2 = ({ changeNavigate, navigation }) => {
+    const user = {
+        name: 'Negoue Tchinda Patrick',
+        status: 'En ligne',
+        lien_image:"",
+        own: false
+    };
+
     return (
         <View style={{ flex: 1 }} >
             <ImageBackground source={background} style={{ flex: 1, alignItems: "center", padding: 10 }}>
@@ -31,7 +38,7 @@ const ScreenChoice2 = ({ changeNavigate }) => {
 
                 <View style={styles.frameParent}>
                     <View style={styles.sortRightParent}>
-                        <Pressable style={styles.sortRight} onPress={() => {changeNavigate(true) }}>
+                        <Pressable style={styles.sortRight} onPress={() => { changeNavigate(true) }}>
                             <Image style={styles.sortRightIcon} resizeMode="cover" source={arrow_left} />
                         </Pressable>
                         <View style={styles.container_side}>
@@ -44,7 +51,7 @@ const ScreenChoice2 = ({ changeNavigate }) => {
                         <Text style={styles.creerVotrePropre}>Connectez-vous a une partie existante et attendez le crie de guerre pour commencez a établir votre strategie</Text>
                     </View>
                     <View style={[styles.vectorParent]}>
-                        <Pressable style={styles.vectorParentPressable} >
+                        <Pressable style={styles.vectorParentPressable} onPress={() => { navigation.navigate("Loby", {user}) }}>
                             <Text style={[styles.dmarrez, styles.dmarrezFlexBox]}>Rejoindre</Text>
                             <Image style={styles.approvalIcon} resizeMode="cover" source={approval} />
                         </Pressable>
@@ -56,7 +63,12 @@ const ScreenChoice2 = ({ changeNavigate }) => {
     )
 }
 
-const ScreeChoice1 = ({ changeNavigate,navigation }) => {
+const ScreeChoice1 = ({ changeNavigate, navigation }) => {
+    const user = {
+        name: 'Choco Picant',
+        status: 'En ligne',
+        own: true
+    };
 
     return (
         <View style={{ flex: 1 }} >
@@ -84,7 +96,7 @@ const ScreeChoice1 = ({ changeNavigate,navigation }) => {
                         <Text style={styles.creerVotrePropre}>Creer votre propre partie et attendez vos participants et lancer la</Text>
                     </View>
                     <View style={[styles.vectorParent]}>
-                        <Pressable style={styles.vectorParentPressable} onPress={()=>{navigation.navigate("Loby")}}>
+                        <Pressable style={styles.vectorParentPressable} onPress={() => { navigation.navigate("Loby", {user}) }}>
                             <Text style={[styles.dmarrez, styles.dmarrezFlexBox]}>Démarrez</Text>
                             <Image style={styles.approvalIcon} resizeMode="cover" source={approval} />
                         </Pressable>
@@ -96,12 +108,12 @@ const ScreeChoice1 = ({ changeNavigate,navigation }) => {
     )
 }
 
-export default Main_Choice = ({navigation}) => {
+export default Main_Choice = ({ navigation }) => {
     const [navigate, SetNavigate] = React.useState(true);
     return (
         <>
             {
-                navigate ? <ScreeChoice1 changeNavigate={SetNavigate} navigation={navigation}/> : <ScreenChoice2 changeNavigate={SetNavigate} navigation={navigation} />
+                navigate ? <ScreeChoice1 changeNavigate={SetNavigate} navigation={navigation} /> : <ScreenChoice2 changeNavigate={SetNavigate} navigation={navigation} />
             }
         </>
     )
@@ -165,7 +177,7 @@ const styles = StyleSheet.create(
             justifyContent: "space-between",
             marginTop: 20,
             marginBottom: 50,
-            width:300
+            width: 300
         }
 
         , container_side:

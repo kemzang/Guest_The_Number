@@ -14,7 +14,7 @@ import rank_icon from "../assets/images/ScreeToBegin/icone_score.png";
 import parameter from "../assets/images/ScreeToBegin/icon_settings.png";
 import profil from "../assets/images/ScreeToBegin/profil.png";
 
-export default ScreeToBegin = () => {
+export default ScreeToBegin = ({navigation}) => {
     return (
         <View style={{ flex: 1 }}>
             {/* {partie 1: Debut de page (header) } */}
@@ -74,7 +74,7 @@ export default ScreeToBegin = () => {
                 {/* {Partie 3 : Affichage du Button de debut de partie} */}
 
 
-                <Pressable style={styles.rectangleParent2} onPress={() => { }}>
+                <Pressable style={styles.rectangleParent2} onPress={() => {navigation.navigate("Page_de_choix_de_jeu") }}>
                     <View style={styles.playChild} />
                     <Text style={styles.jouer}>Jouer</Text>
                 </Pressable>
@@ -270,8 +270,8 @@ const styles = StyleSheet.create(
         },
         rectangleParent2: {
             position: "relative",
-            top: -60,
-            left: 95,
+            top: -110,
+            left: 100,
             width: "100%",
             height: 54
         }
