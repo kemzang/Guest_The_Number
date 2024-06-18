@@ -30,7 +30,7 @@ const Stack = createStackNavigator();
 // Configurer la navigation
 function App() {
 
-  const isa = false;
+  const isa = true;
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>

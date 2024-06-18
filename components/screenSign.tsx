@@ -28,7 +28,7 @@ const ScreenSign = ({navigation}) => {
 						</Text>
 					</Text>
 				</Text>
-				<Pressable style={[styles.groupParent, styles.groupParentLayout]} onPress={()=>{navigation.navigate("Page_de_choix_de_jeu")}}>
+				<Pressable style={[styles.groupParent, styles.groupParentLayout]} onPress={()=>{navigation.navigate("Page_Inscription_connexion")}}>
 					<View>
 						<View style={[styles.groupChild, styles.groupShadowBox]} />
 						<Text style={[styles.signTypo]}>Sign Up</Text>
