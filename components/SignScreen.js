@@ -4,20 +4,60 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 import * as React from "react";
-import { StyleSheet, View, Image, Text, ImageBackground, Pressable, StatusBar } from "react-native";
+import { StyleSheet, View, Image, Text, ImageBackground, Pressable, StatusBar, Alert } from "react-native";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { Input } from "react-native-elements";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import background from "../assets/images/Group4.png";
 import perso from "../assets/images/SignScreen/perso.png";
 import google from "../assets/images/SignScreen/Google.png";
 import ImmersiveMode from 'react-native-immersive';
+import auth from '@react-native-firebase/auth'
 
 // import SvgUri from 'react-native-svg';
 
+GoogleSignin.configure({
+    webClientId:''
+})
+
 const SignScreen = () => {
+    const [mail,setMail]=React.useState('');
+    const [password,setPassword]=React.useState('');
     const hideBars = () => {
         ImmersiveMode;
     };
+
+    async function onGoogleButtonPress() {
+        // Check if your device supports Google Play
+        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+      
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      
+        // Sign-in the user with the credential
+        return auth().signInWithCredential(googleCredential);
+      }
+
+     function googleConnection(){
+        onGoogleButtonPress().then(() =>{alert('compte google enregistrer')}).catch(()=>{alert("echec de l'operation")})
+     }
+
+
+    function inscription(){
+        if(mail=='' || password==''){
+            alert('Veuillez remplir les champs');
+            return;
+        }
+        auth().createUserWithEmailAndPassword(mail,password)
+        .then(()=>{
+            alert('Inscription réussie');
+        })
+        .catch((error)=>{
+            alert('Inscription a echoue');
+        })
+    }
 
 
     return (
@@ -51,13 +91,19 @@ const SignScreen = () => {
                                 placeholder="Saisissez du texte..."
                             /> */}
                             <Input
-                                placeholder="Nom d'utilisateur"
+                                value={mail}
+                                keyboardType='email-address'
+                                onChangeText={(text) => setMail(text)}
+                                placeholder="email"
                                 style={styles.input1}
                             // leftIcon={<Icon name="google" size={24} />}
                             />
 
                             <Input
+                                value={password}
+                                onChangeText={(text) => setPassword(text)}
                                 placeholder="mot de passe"
+                                secureTextEntry={true}
                                 style={styles.input2}
                             />
 
@@ -69,7 +115,7 @@ const SignScreen = () => {
                     {/*Partie 3: action des buttons*/}
 
                     <View style={styles.parent}>
-                        <Pressable style={styles.btn_inscription}>
+                        <Pressable style={styles.btn_inscription} onPress={inscription}>
                             <Text style={styles.text_inscription}>
                                 S'inscrire
                             </Text>
@@ -78,7 +124,7 @@ const SignScreen = () => {
                             <View style={styles.lineView} />
                             <Text style={styles.ou} >ou</Text>
                         </View>
-                        <Pressable style={styles.btn_connexion_google} onPress={() => { }}>
+                        <Pressable style={styles.btn_connexion_google} onPress={() => {googleConnection }}>
                             <Text style={styles.connexion_google}>
                                 <Image source={google} />
                                 <Text>  Connexion avec google
