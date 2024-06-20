@@ -15,8 +15,8 @@ const ModalCard = ({ visible, onClose, title, message,onPress }) => {
         >
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    <Text style={styles.modalTitle}>{title}</Text>
-                    <Text style={styles.modalMessage}>{message}</Text>
+                    <Text style={[styles.modalTitle,{color:"black"}]}>{title}</Text>
+                    <Text style={[styles.modalMessage,{color:"black"}]}>{message}</Text>
                     <View style={{ display: "flex", flexDirection: "row", width: 200, justifyContent: "space-between", alignItems: "center" }}>
                         <TouchableOpacity
                             style={styles.openButton}
@@ -66,14 +66,14 @@ const styles = StyleSheet.create({
         marginTop: 10,
         paddingVertical: 10,
         paddingHorizontal: 20,
-        borderRadius: 5,
+        borderRadius: 20,
         backgroundColor: '#c93039',
     },
     openButton: {
         marginTop: 10,
         paddingVertical: 10,
         paddingHorizontal: 20,
-        borderRadius: 5,
+        borderRadius: 20,
         backgroundColor: '#ffc700',
     },
     closeButtonText: {

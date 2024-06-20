@@ -1,13 +1,32 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 /* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 import * as React from "react";
 import { StyleSheet, View, Text, Pressable, ImageBackground } from "react-native";
+import firebase from '@react-native-firebase/app';
+import firestore from '@react-native-firebase/firestore';
 
-import background from  "../assets/images/Group4.png";
 
-const ScreenSign = ({navigation}) => {
+import background from "../assets/images/Group4.png";
+
+const addUser = async (user: { nom: any; email: any; }) => {
+	try {
+		await firestore().collection('utilisateur').add({
+			Nom: user.nom,
+			Email: user.email,
+		});
+		console.log('User added successfully!');
+	} catch (error) {
+		console.error('Error adding user: ', error);
+	}
+};
+
+
+const ScreenSign = ({ navigation }) => {
+
 	return (
 
 		<View style={styles.container}>
@@ -28,7 +47,7 @@ const ScreenSign = ({navigation}) => {
 						</Text>
 					</Text>
 				</Text>
-				<Pressable style={[styles.groupParent, styles.groupParentLayout]} onPress={()=>{navigation.navigate("Page_Inscription_connexion")}}>
+				<Pressable style={[styles.groupParent, styles.groupParentLayout]} onPress={() => { navigation.navigate("Page_Inscription_connexion") }}>
 					<View>
 						<View style={[styles.groupChild, styles.groupShadowBox]} />
 						<Text style={[styles.signTypo]}>Sign Up</Text>

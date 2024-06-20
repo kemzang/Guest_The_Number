@@ -156,7 +156,7 @@ const ScreeLoby = ({ navigation }) => {
                 return (
                     <View style={styles.rulesContainer}>
                         <Text style={styles.rulesText}>Voici les règles du jeu 🎲</Text>
-                        <Text>Le jeu consiste a choisir dans un intervalle de nombre un nombre et de le garder secret ,
+                        <Text style={{color:"#595450"}}>Le jeu consiste a choisir dans un intervalle de nombre un nombre et de le garder secret ,
                             ensuite vous devez tout faire pour trouver le nombre d’un autre joueur afin de l’éliminer de la partie ,
                             après un joueur éliminer tout les joueurs rechoisissent un nombre ainsi
                             de suite jusqu'à ce qu’il ne reste plus qu’une personne .</Text>
@@ -166,7 +166,7 @@ const ScreeLoby = ({ navigation }) => {
                 return (
                     <View style={settingsStyle.container}>
                         <View style={{ flexDirection: "row", alignItems: "center", paddingTop: 41 }}>
-                            <Text>Activation des notifications  </Text>
+                            <Text style={{color:"#595450"}}>Activation des notifications  </Text>
                             <TouchableOpacity style={settingsStyle.switch} onPress={toggleSwitch}>
                                 <Animated.View
                                     style={[
@@ -178,13 +178,14 @@ const ScreeLoby = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
-                            <Text>Nombre maximum de joueur  </Text>
+                            <Text style={{color:"#595450"}}>Nombre maximum de joueur  </Text>
                             <SafeAreaView>
                                 <TextInput
-                                    style={settingsStyle.input}
+                                    style={[settingsStyle.input,{color:"black",textAlign:"center"}]}
                                     keyboardType="numeric"
                                     maxLength={9}
                                     value={7}
+
                                 />
 
                             </SafeAreaView>
@@ -217,18 +218,23 @@ const ScreeLoby = ({ navigation }) => {
                             Icon={User}
                             badge={nbJoeur}
                             onPress={() => handlePress(1)}
+                            styletext={[{color:"black"}]}
                         />
                         <TouchableBtn
                             text="Règles"
                             isActive={activeButton === 2}
                             Icon={Rules}
                             onPress={() => handlePress(2)}
+                            styletext={[{color:"black"}]}
+
                         />
                         <TouchableBtn
                             text="Réglages"
                             isActive={activeButton === 3}
                             Icon={Settings}
                             onPress={() => handlePress(3)}
+                            styletext={[{color:"black"}]}
+
                         />
                     </View>
                 </View>
@@ -263,7 +269,7 @@ const ScreeLoby = ({ navigation }) => {
                                 onClose={closeModal}
                                 message="Êtes-vous sure de vouloir quitter la partie ?."
                                 onPress={() => { navigation.navigate("Page_de_choix_de_jeu") }}
-
+                                
                             />
                             <Modal
                                 visible={modalVisible2}

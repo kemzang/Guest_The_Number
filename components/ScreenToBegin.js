@@ -7,14 +7,20 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable quotes */
 import * as React from "react";
-import { StyleSheet, View, Image, Text, ImageBackground, Pressable, StatusBar } from "react-native";
-import { Input, Button, LinearProgress, SpeedDial } from "react-native-elements";
+import { StyleSheet, View, Image, Text, ImageBackground, Pressable } from "react-native";
 import background from "../assets/images/Group4.png";
 import rank_icon from "../assets/images/ScreeToBegin/icone_score.png";
 import parameter from "../assets/images/ScreeToBegin/icon_settings.png";
+import auth from '@react-native-firebase/auth';
 import profil from "../assets/images/ScreeToBegin/profil.png";
 
-export default ScreeToBegin = ({navigation}) => {
+export default ScreeToBegin = ({ navigation }) => {
+    const [btn_param, setBtn_param] = React.useState(false);
+    const Deconnexion = () => {
+        auth()
+        .signOut()
+        .then(() => console.log('User signed out!'));
+    }
     return (
         <View style={{ flex: 1 }}>
             {/* {partie 1: Debut de page (header) } */}
@@ -33,9 +39,11 @@ export default ScreeToBegin = ({navigation}) => {
                         </View>
                     </Pressable>
 
-                    <Pressable>
-                        <View style={styles.parameter}>
+
+                    <Pressable onPress={() => { setBtn_param(!btn_param) }}>
+                        <View style={[styles.parameter]}>
                             <Image source={parameter} />
+                            {btn_param && (<Pressable onPress={()=>{Deconnexion()}}><View style={{ backgroundColor: "white", padding: 6 }}><Text style={{ color: "black" }}>{'Déconnection'}</Text></View></Pressable>)}
                         </View>
                     </Pressable>
                 </View>
@@ -74,7 +82,7 @@ export default ScreeToBegin = ({navigation}) => {
                 {/* {Partie 3 : Affichage du Button de debut de partie} */}
 
 
-                <Pressable style={styles.rectangleParent2} onPress={() => {navigation.navigate("Page_de_choix_de_jeu") }}>
+                <Pressable style={styles.rectangleParent2} onPress={() => { navigation.navigate("Page_de_choix_de_jeu") }}>
                     <View style={styles.playChild} />
                     <Text style={styles.jouer}>Jouer</Text>
                 </Pressable>
@@ -230,14 +238,14 @@ const styles = StyleSheet.create(
         {
             backgroundColor: "#edecf0",
             borderRadius: 100,
-            width:80,
-            height:80,
-            position:"relative",
-            top:10,
-            left:10,
-            display:"flex",
-            justifyContent:"center",
-            alignItems:"center"
+            width: 80,
+            height: 80,
+            position: "relative",
+            top: 10,
+            left: 10,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
         }
 
 
