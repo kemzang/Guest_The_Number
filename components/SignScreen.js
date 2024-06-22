@@ -13,12 +13,10 @@ import perso from "../assets/images/SignScreen/perso.png";
 import google from "../assets/images/SignScreen/Google.png";
 import ImmersiveMode from 'react-native-immersive';
 import auth from '@react-native-firebase/auth'
+import { onGoogleButtonPress } from "./sgnIn";
 
 // import SvgUri from 'react-native-svg';
 
-GoogleSignin.configure({
-    webClientId:''
-})
 
 const SignScreen = () => {
     const [mail,setMail]=React.useState('');
@@ -27,21 +25,37 @@ const SignScreen = () => {
         ImmersiveMode;
     };
 
-    async function onGoogleButtonPress() {
-        // Check if your device supports Google Play
-        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-        // Get the users ID token
-        const { idToken } = await GoogleSignin.signIn();
-      
-        // Create a Google credential with the token
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      
-        // Sign-in the user with the credential
-        return auth().signInWithCredential(googleCredential);
-      }
-
+    React.useEffect(()=>{ GoogleSignin.configure({  
+        webClientId: "2181659769-9stgm0fvoshma8qtt7gf143f41ovirt7.apps.googleusercontent.com"
+    })},[])
      function googleConnection(){
-        onGoogleButtonPress().then(() =>{alert('compte google enregistrer')}).catch(()=>{alert("echec de l'operation")})
+        onGoogleButtonPress()
+        .catch((error)=>{
+            alert("echec de l'operation")
+            console.log(error)
+        })
+        .then((data) =>{alert('compte google enregistrer'); console.log("user:"+data)})
+       
+     }
+
+     async function googlesingin(){
+        GoogleSignin.configure({  
+            webClientId: "2181659769-9stgm0fvoshma8qtt7gf143f41ovirt7.apps.googleusercontent.com"
+        })
+        try{
+    // Check if your device supports Google Play
+        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+  
+    // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  
+    // Sign-in the user with the credential
+        return auth().signInWithCredential(googleCredential);
+        }catch(e){
+            console.log(e)
+        }
      }
 
 
@@ -124,7 +138,7 @@ const SignScreen = () => {
                             <View style={styles.lineView} />
                             <Text style={styles.ou} >ou</Text>
                         </View>
-                        <Pressable style={styles.btn_connexion_google} onPress={() => {googleConnection }}>
+                        <Pressable style={styles.btn_connexion_google} onPress={googlesingin}>
                             <Text style={styles.connexion_google}>
                                 <Image source={google} />
                                 <Text>  Connexion avec google
